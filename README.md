@@ -1,7 +1,7 @@
 # High_Prep_PS3
-# 🚀 GNSS Spoof Detection using Hybrid Anomaly Detection
+# GNSS Spoof Detection using Hybrid Anomaly Detection
 
-## 📌 Problem Understanding
+## Problem Understanding
 
 Global Navigation Satellite Systems (GNSS) are critical for navigation, timing, and synchronization across multiple domains such as aviation, maritime systems, and telecommunications. However, GNSS signals are inherently weak and susceptible to **spoofing attacks**, where malicious signals manipulate position, velocity, or timing information.
 
@@ -15,27 +15,27 @@ Due to the absence of labeled training data, the problem is approached as an **u
 
 ---
 
-## 🧠 Feature Engineering
+## Feature Engineering
 
 Feature engineering is driven by **GNSS signal physics and domain knowledge**.
 
-### 🔹 Signal-Based Features
+### Signal-Based Features
 
 * **EC/LC Ratio** → Detects distortion in correlation peaks
 * **PIP/PQP Ratio** → Captures abnormal signal power distribution
 * **Signal Power** → Combined strength of signal components
 
-### 🔹 Time-Based Features
+### Time-Based Features
 
 * **Time Difference (RX_time - TOW)** → Detects timing inconsistencies and replay attacks
 
-### 🔹 Temporal Features (Per Satellite - PRN)
+### Temporal Features (Per Satellite - PRN)
 
 * **Doppler Difference** → Sudden changes indicate spoofing
 * **Phase Difference** → Detects discontinuities in signal phase
 * **Pseudorange Difference** → Captures geometric inconsistencies
 
-### 🔹 Rolling Statistics
+### Rolling Statistics
 
 * **Doppler Rolling Std** → Measures signal stability over time
 * **CN0 Rolling Mean** → Identifies abnormal signal strength patterns
@@ -44,7 +44,7 @@ These features collectively capture **multi-dimensional anomalies**, which are e
 
 ---
 
-## 🤖 Model Architecture
+## Model Architecture
 
 A **hybrid anomaly detection framework** is used:
 
@@ -73,7 +73,7 @@ This ensures both **interpretability** and **robustness**.
 
 ---
 
-## ⚙️ Training Methodology
+## Training Methodology
 
 Since labeled data is not available, a **fully unsupervised pipeline** is adopted:
 
@@ -89,32 +89,32 @@ Since labeled data is not available, a **fully unsupervised pipeline** is adopte
 
 ---
 
-## 🧾 Justification of Design Decisions
+## Justification of Design Decisions
 
-### 🔹 Why Unsupervised Learning?
+### Why Unsupervised Learning?
 
 * No labeled training data was provided
 * Spoofing is inherently an anomaly detection problem
 
-### 🔹 Why Isolation Forest?
+### Why Isolation Forest?
 
 * Efficient for large datasets
 * Handles high-dimensional data well
 * Does not assume data distribution
 
-### 🔹 Why Rule-Based System?
+### Why Rule-Based System?
 
 * Incorporates **first-principle GNSS knowledge**
 * Improves interpretability
 * Acts as a strong baseline
 
-### 🔹 Why Hybrid Approach?
+### Why Hybrid Approach?
 
 * ML captures complex patterns
 * Rules capture domain-specific anomalies
 * Combination improves overall robustness
 
-### 🔹 Why Temporal + PRN-Based Features?
+### Why Temporal + PRN-Based Features?
 
 * GNSS signals evolve over time
 * Each satellite (PRN) behaves independently
@@ -122,7 +122,7 @@ Since labeled data is not available, a **fully unsupervised pipeline** is adopte
 
 ---
 
-## 📊 Output Format
+## Output Format
 
 The final submission contains:
 
@@ -132,7 +132,7 @@ The final submission contains:
 
 ---
 
-## 🏆 Conclusion
+## Conclusion
 
 This solution leverages a **combination of domain knowledge and machine learning** to detect GNSS spoofing in the absence of labeled data. By modeling signal behavior, temporal dynamics, and satellite-wise inconsistencies, the system achieves a **robust and scalable spoof detection framework**.
 
